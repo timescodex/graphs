@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.area {
+  fill: steelblue;
+}
+
+.bar{
+  fill:#393;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="./js/graph.js"></script>
+<body>
+<div id="zhu" class="zhu" name="zhu">
+</div>
+
+<div id="pie" class="pie" name="pie">
+</div>
+
+<div id="linechart" class="linechart" name="linechart">
+</div>
+
+<div id="areachart" class="areachart" name="areachart">
+</div>
+
+<div id="multiseriechart" class="areachart" name="areachart">
+</div>
+</body>
+<script>
+//柱状图
+var graphInstance = graphs();
+
+var dataJson = {
+        "data": [{
+            "letter": "A",
+            "frequency": 0.08167
+          }, {
+            "letter": "B",
+            "frequency": 0.14167
+          }, {
+            "letter": "C",
+            "frequency": 0.18167
+          }, {
+            "letter": "D",
+            "frequency": 0.21167
+          }, {
+            "letter": "E",
+            "frequency": 0.17167
+          }
+        ]
+}
+graphInstance.getZhu("zhu",dataJson);
+
+
+var dataPieJson = {
+  "data":[{age:"<5",population:2704659},{age:"5-13",population:4499890}]
+}
+graphInstance.getPie("pie",dataPieJson);
+
+
+var dataLineChartJson={
+  "data":[{"date":"1-May-12","close":582.13},{"date":"30-Apr-12","close":523.98},{"date":"29-Apr-12","close":543.98},{"date":"28-Apr-12","close":533.98},{"date":"27-Apr-12","close":563.98},{"date":"26-Apr-12","close":583.98}]
+}
+
+graphInstance.getLineChart("linechart",dataLineChartJson);
+
+
+var dataAreaChartJson={
+  "data":[{"date":"1-May-12","close":582.13},{"date":"30-Apr-12","close":523.98},{"date":"29-Apr-12","close":543.98},{"date":"28-Apr-12","close":533.98},{"date":"27-Apr-12","close":563.98},{"date":"26-Apr-12","close":583.98}]
+}
+
+graphInstance.getAreaChart("areachart",dataAreaChartJson);
+
+
+var dataMultiSerieJson = {
+  "data":[{"date":"20111001","New York":63.4,"San Francisco":62.7,"Austin":72.2},{"date":"20111002","New York":58.0,"San Francisco":59.9,"Austin":67.7},{"date":"20111003","New York":78.0,"San Francisco":59.9,"Austin":67.7}]
+}
+graphInstance.getMultiSerieLineChart("multiseriechart",dataMultiSerieJson);
+
+</script>
+</html>
